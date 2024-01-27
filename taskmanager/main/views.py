@@ -6,7 +6,7 @@ from .forms import TaskForm
 
 def index(request):
     tasks = Task.objects.order_by("-id")
-    return render(request, 'main/index.html', {'title': 'Главная страница сайта', 'tasks': tasks})
+    return render(request, 'main/index.html', {'title': 'Home', 'tasks': tasks})
 
 def about(request):
     return render(request, 'main/about.html')
@@ -19,7 +19,7 @@ def create(request):
             form.save()
             return redirect('home')
         else:
-            error = "Форма была неверной"
+            error = "Invalid form"
 
     form  = TaskForm()
     context = {

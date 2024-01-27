@@ -1,16 +1,16 @@
 {% extends 'main/base.html' %}
 
 {% block title %}
-Создать комментарий
+Create comment
 {% endblock %}
 
 {% block content %}
-    <h1>Создать комментарий</h1>
+    <h1>Create comment</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.title }}<br>
         {{ form.task }}<br>
-        <button type="submit" class="btn btn-success">Добавить</button>
+        <button type="submit" class="btn btn-success">Add</button>
         <span>{{error}}</span>
 
     </form>
