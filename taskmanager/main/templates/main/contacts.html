@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Contact form
+{% endblock %}
+
+{% block content %}
+    <h1>Contact form</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% if success %}
+            <div class="alert alert-danger">
+                <strong>Thank you for your message!</strong>
+            </div>
+        {% endif %}
+
+        {{ form.name }}<br>
+<!--        {% if form.name.errors %}-->
+<!--            <div class="alert alert-danger">-->
+<!--                <strong>{{ form.name.error }}</strong>-->
+<!--            </div>-->
+<!--        {% endif %}-->
+
+        {{ form.email }}<br>
+<!--        {% if form.email.errors %}-->
+<!--            <div class="alert alert-danger">-->
+<!--                <strong>{{ form.email.error }}</strong>-->
+<!--            </div>-->
+<!--        {% endif %}-->
+
+        {{ form.message }}<br>
+<!--        {% if form.message.errors %}-->
+<!--            <div class="alert alert-danger">-->
+<!--                <strong>{{ form.message.error }}</strong>-->
+<!--            </div>-->
+<!--        {% endif %}-->
+        <button type="submit" class="btn btn-success">Submit</button>
+        <span>{{error}}</span>
+
+    </form>
+{% endblock %}

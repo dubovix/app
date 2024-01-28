@@ -1,5 +1,6 @@
 from .models import Task
 from django.forms import ModelForm, TextInput, Textarea
+from django import forms
 
 class TaskForm(ModelForm):
     class Meta:
@@ -17,3 +18,25 @@ class TaskForm(ModelForm):
 
         }
 
+
+class ContactForm(forms.Form):
+    name = forms.CharField(
+        min_length=2,
+        widget=forms.TextInput(
+            attrs = {'placeholder':'Input your name','class':'form-control'}
+        )
+    )
+
+    email = forms.EmailField(
+        min_length=2,
+        widget=forms.EmailInput(
+            attrs={'placeholder': 'Input your email address','class':'form-control'}
+        )
+    )
+
+    message = forms.CharField(
+        min_length=20,
+        widget=forms.Textarea(
+            attrs={'placeholder': 'Input your message', 'cols':30, 'rows':9, 'class':'form-control'}
+        )
+    )
