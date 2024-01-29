@@ -51,12 +51,12 @@ def contacts(request):
 
 def send_message(name, email, message):
     text = get_template('message.html')
-    html = get_template('message.html')
+    html = get_template('/Users/alexdubovik/PycharmProjects/App/taskmanager/main/templates/templates/main/message.html')
     context = {'name': name, 'email': email, 'message': message}
     subject = "Message from user"
     from_email = "from@example.com"
     text_content = text.render(context)
-    html_content = text.render(context)
+    html_content = html.render(context)
 
     msg = EmailMultiAlternatives(subject, text_content, from_email, ['admin@example.com'])
     msg.attach_alternative(html_content, 'text/html')
