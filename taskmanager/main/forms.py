@@ -35,7 +35,7 @@ class ContactForm(forms.Form):
     )
 
     message = forms.CharField(
-        min_length=20,
+        min_length=2,
         widget=forms.Textarea(
             attrs={'placeholder': 'Input your message', 'cols':30, 'rows':9, 'class':'form-control'}
         )

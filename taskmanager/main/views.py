@@ -33,7 +33,6 @@ def create(request):
 
 
 
-
 def contacts(request):
     context = {}
     if request.method == "POST":
@@ -41,6 +40,7 @@ def contacts(request):
         if form.is_valid():
             send_message(form.cleaned_data['name'], form.cleaned_data['email'], form.cleaned_data['message'])
             context = {'succsess': 1}
+            return redirect('home')
     else:
         form = ContactForm()
     context['form'] = form
@@ -49,9 +49,10 @@ def contacts(request):
 
 
 
+
 def send_message(name, email, message):
     text = get_template('message.html')
-    html = get_template('/Users/alexdubovik/PycharmProjects/App/taskmanager/main/templates/templates/main/message.html')
+    html = get_template('message.html')
     context = {'name': name, 'email': email, 'message': message}
     subject = "Message from user"
     from_email = "from@example.com"
@@ -61,3 +62,5 @@ def send_message(name, email, message):
     msg = EmailMultiAlternatives(subject, text_content, from_email, ['admin@example.com'])
     msg.attach_alternative(html_content, 'text/html')
     msg.send()
+
+
